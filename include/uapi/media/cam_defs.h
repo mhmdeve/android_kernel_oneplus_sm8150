@@ -40,7 +40,8 @@
 #define CAM_COMMON_OPCODE_BASE_v2           0x150
 #define CAM_ACQUIRE_HW                      (CAM_COMMON_OPCODE_BASE_v2 + 0x1)
 #define CAM_RELEASE_HW                      (CAM_COMMON_OPCODE_BASE_v2 + 0x2)
-#define CAM_DUMP_REQ                        (CAM_COMMON_OPCODE_BASE_v2 + 0x3)
+#define CAM_GET_DPC_DATA                    (CAM_COMMON_OPCODE_BASE_v2 + 0x3)
+#define CAM_GET_FUSE_ID                     (CAM_COMMON_OPCODE_BASE_v2 + 0x4)
 
 #define CAM_EXT_OPCODE_BASE                     0x200
 #define CAM_CONFIG_DEV_EXTERNAL                 (CAM_EXT_OPCODE_BASE + 0x1)
@@ -104,12 +105,17 @@ struct cam_control {
 /* camera IOCTL */
 #define VIDIOC_CAM_CONTROL \
 	_IOWR('V', BASE_VIDIOC_PRIVATE, struct cam_control)
+<<<<<<< HEAD
 
 #ifdef VENDOR_EDIT
 #define VIDIOC_CAM_FTM_POWNER_UP 0
 #define VIDIOC_CAM_FTM_POWNER_DOWN 1
 #endif
 
+=======
+#define VIDIOC_CAM_FTM_POWNER_UP 0
+#define VIDIOC_CAM_FTM_POWNER_DOWN 1
+>>>>>>> 5155e5c2b102 (msm: camera: Checkout to op-oss)
 /**
  * struct cam_hw_version - Structure for HW version of camera devices
  *
@@ -650,60 +656,6 @@ struct cam_cmd_mem_regions {
 	uint32_t num_regions;
 	struct cam_cmd_mem_region_info map_info_array[1];
 };
-
-/**
- * struct cam_dump_req_cmd -
- *        Dump the information of issue req id
- *
- * @issue_req_id   : Issue Request Id
- * @session_handle : Session Handle
- * @link_hdl       : link handle
- * @dev_handle     : Device Handle
- * @error_type     : Error Type
- * @buf_handle     : Buffer Handle
- * @offset         : offset for the buffer
- * @reserved       : Reserved
- */
-struct cam_dump_req_cmd {
-	int64_t        issue_req_id;
-	int32_t        session_handle;
-	int32_t        link_hdl;
-	int32_t        dev_handle;
-	int32_t        error_type;
-	uint32_t       buf_handle;
-	int32_t        offset;
-	uint32_t       reserved;
-};
-
-#ifdef VENDOR_EDIT
-#define CAM_OEM_COMMON_OPCODE_BASE                  0x8000
-
-#define CAM_OEM_RW_SIZE_MAX        128
-#define CAM_OEM_RW_REG            (CAM_OEM_COMMON_OPCODE_BASE + 1)
-#define CAM_OEM_GET_ID            (CAM_OEM_COMMON_OPCODE_BASE + 2)
-
-#define CAM_OEM_CMD_READ_DEV     0
-#define CAM_OEM_CMD_WRITE_DEV    1
-
-struct cam_oem_rw_ctl {
-	int32_t   cmd_code;
-	uint64_t  data_addr;
-	int32_t   reg_addr;
-	uint32_t  slave_addr;
-	uint32_t  reg_data_type;
-	int32_t   reg_addr_type;
-	int16_t   num_bytes;
-};
-
-struct cam_oem_write_i2c_reg_array {
-	uint32_t reg_addr;
-	uint32_t reg_data;
-	uint32_t delay;
-	uint32_t data_mask;
-};
-
-#endif
-#endif
 
 
 #endif /* __UAPI_CAM_DEFS_H__ */
