@@ -36,34 +36,5 @@ scripts/kconfig/conf  --silentoldconfig Kconfig
   AR      techpack/audio/ipc/built-in.o
   AR      techpack/audio/built-in.o
   AR      techpack/built-in.o
-  CC      drivers/nfc/oplus_nfc/oplus_nfc.o
-  AR      drivers/nfc/oplus_nfc/built-in.o
-  CC      drivers/nfc/p73-spi/p73.o
-  AR      drivers/nfc/p73-spi/built-in.o
-  CC      drivers/nfc/pn553-i2c/pn553.o
-  AR      drivers/nfc/pn553-i2c/built-in.o
-  AR      drivers/nfc/built-in.o
-  AR      drivers/nvme/host/built-in.o
-  AR      drivers/nvme/target/built-in.o
-  AR      drivers/nvme/built-in.o
-  CC      drivers/nvmem/core.o
-  CC      drivers/nvmem/qcom-spmi-sdam.o
-  AR      drivers/nvmem/nvmem_core.o
-  AR      drivers/nvmem/built-in.o
-  CC      drivers/of/base.o
-  CC      drivers/of/device.o
-  DTC     arch/arm64/boot/dts/18821/sm8150.dtb
-  CC      drivers/of/platform.o
-  DTC     arch/arm64/boot/dts/18821/sm8150-v2.dtb
-  CC      drivers/of/property.o
-  CC      drivers/of/kobj.o
-  CC      drivers/of/fdt.o
-  DTC     arch/arm64/boot/dts/18821/sm8150p.dtb
-  CC      drivers/of/fdt_address.o
-  CC      drivers/of/address.o
-  DTC     arch/arm64/boot/dts/18821/sm8150p-v2.dtb
-  CC      drivers/of/irq.o
-  DTC     arch/arm64/boot/dts/18821/sm8150-mtp-overlay.dtbo
-  CC      drivers/ommc/core/core.o
-  CC      drivers/of/of_net.o
-  CC      drivers/of/of_mdio.o
+  CC      drivers/soc/oplus/sensor/oplus_sensor_devinfo.o
+make[1]: Leaving directory '/home/master/kernel/sm8150/out'
