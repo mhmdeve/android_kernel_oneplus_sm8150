@@ -74,6 +74,12 @@ KBUILD_AFLAGS	+= $(lseinstr) $(brokengasinst)
 KBUILD_CFLAGS	+= $(call cc-option,-mabi=lp64)
 KBUILD_AFLAGS	+= $(call cc-option,-mabi=lp64)
 
+ifeq ($(cc-name),clang)
+KBUILD_CFLAGS	+= -DCONFIG_ARCH_SUPPORTS_INT128
+else
+KBUILD_CFLAGS	+= $(call cc-ifversion, -ge, 0500, -DCONFIG_ARCH_SUPPORTS_INT128)
+endif
+
 ifeq ($(CONFIG_SHADOW_CALL_STACK), y)
 KBUILD_CFLAGS	+= -ffixed-x18
 endif
@@ -86,7 +92,7 @@ LD		+= -EB
 ifeq ($(ld-name),gold)
 LDFLAGS		+= -maarch64_elf64_be_vec
 else
-LDFLAGS		+= -maarch64linuxb
+LDFLAGS		+= -maarch64elfb -z norelro
 endif
 UTS_MACHINE	:= aarch64_be
 else
@@ -97,9 +103,13 @@ LD		+= -EL
 ifeq ($(ld-name),gold)
 LDFLAGS		+= -maarch64_elf64_le_vec
 else
-LDFLAGS		+= -maarch64linux
+LDFLAGS		+= -maarch64elf -z norelro
 endif
 UTS_MACHINE	:= aarch64
+endif
+
+ifeq ($(ld-name),lld)
+LDFLAGS += -z norelro
 endif
 
 CHECKFLAGS	+= -D__aarch64__ -m64
