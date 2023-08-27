@@ -17,7 +17,7 @@
 #include <media/v4l2-subdev.h>
 #include <media/cam_sensor.h>
 #include <media/cam_sensor.h>
-#include "cam_cci_dev.h"
+#include "../cam_cci/cam_cci_dev.h"
 #include "cam_sensor_io.h"
 
 #define I2C_POLL_TIME_MS 5
@@ -26,11 +26,7 @@
 #define I2C_COMPARE_MATCH 0
 #define I2C_COMPARE_MISMATCH 1
 
-//#ifndef VENDOR_EDIT
-//#define I2C_REG_DATA_MAX       (8*1024)
-//#else
-#define I2C_REG_DATA_MAX       (16*1024)
-//#endif
+#define I2C_REG_DATA_MAX       (8*1024)
 
 /**
  * @client: CCI client structure
