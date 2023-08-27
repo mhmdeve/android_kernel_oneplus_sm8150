@@ -13745,7 +13745,19 @@ struct task_struct {
  int nr_dirtied_pause;
 
  unsigned long dirty_paused_when;
-# 1306 "../include/linux/sched.h"
+
+
+
+
+
+
+ struct list_head user_tasks;
+ atomic64_t ions;
+
+
+
+
+
  u64 timer_slack_ns;
  u64 default_timer_slack_ns;
 # 1335 "../include/linux/sched.h"
@@ -20029,7 +20041,7 @@ struct uts_namespace init_uts_ns = {
   .sysname = "Linux",
   .nodename = "(none)",
   .release = "4.14.180-perf+",
-  .version = "#2 SMP PREEMPT Sun Aug 27 15:45:32 PKT 2023",
+  .version = "#3 SMP PREEMPT Sun Aug 27 17:11:07 PKT 2023",
   .machine = "aarch64",
   .domainname = "(none)",
  },
@@ -20044,7 +20056,7 @@ EXPORT_SYMBOL_GPL(init_uts_ns);
 
 const char linux_banner[] =
  "Linux version " "4.14.180-perf+" " (" "Master" "@"
- "PAK" ") (" "Android (9597734, based on r487747) clang version 17.0.0 (https://android.googlesource.com/toolchain/llvm-project d9f89f4d16663d5012e5c09495f3b30ece3d2362), GNU ld (binutils-2.27-bd24d23f) 2.27.0.20170315" ") " "#2 SMP PREEMPT Sun Aug 27 15:45:32 PKT 2023" "\n";
+ "PAK" ") (" "Android (9597734, based on r487747) clang version 17.0.0 (https://android.googlesource.com/toolchain/llvm-project d9f89f4d16663d5012e5c09495f3b30ece3d2362), GNU ld (binutils-2.27-bd24d23f) 2.27.0.20170315" ") " "#3 SMP PREEMPT Sun Aug 27 17:11:07 PKT 2023" "\n";
 
 const char linux_proc_banner[] =
  "%s version %s"
