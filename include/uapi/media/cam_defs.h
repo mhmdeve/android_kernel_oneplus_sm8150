@@ -657,5 +657,35 @@ struct cam_cmd_mem_regions {
 	struct cam_cmd_mem_region_info map_info_array[1];
 };
 
+#ifdef VENDOR_EDIT
+#define CAM_OEM_COMMON_OPCODE_BASE                  0x8000
+
+#define CAM_OEM_RW_SIZE_MAX        128
+#define CAM_OEM_RW_REG            (CAM_OEM_COMMON_OPCODE_BASE + 1)
+#define CAM_OEM_GET_ID            (CAM_OEM_COMMON_OPCODE_BASE + 2)
+
+#define CAM_OEM_CMD_READ_DEV     0
+#define CAM_OEM_CMD_WRITE_DEV    1
+
+struct cam_oem_rw_ctl {
+	int32_t   cmd_code;
+	uint64_t  data_addr;
+	int32_t   reg_addr;
+	uint32_t  slave_addr;
+	uint32_t  reg_data_type;
+	int32_t   reg_addr_type;
+	int16_t   num_bytes;
+};
+
+struct cam_oem_write_i2c_reg_array {
+	uint32_t reg_addr;
+	uint32_t reg_data;
+	uint32_t delay;
+	uint32_t data_mask;
+};
+
+#endif
+#endif
+
 
 #endif /* __UAPI_CAM_DEFS_H__ */

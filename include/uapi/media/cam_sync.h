@@ -134,4 +134,5 @@ struct cam_private_ioctl_arg {
 #define CAM_SYNC_DEREGISTER_PAYLOAD              5
 #define CAM_SYNC_WAIT                            6
 
+#endif 
 #endif /* __UAPI_CAM_SYNC_H__ */

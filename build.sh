@@ -31,4 +31,5 @@ make -j4 O=out \
         CC=clang \
         CLANG_TRIPLE=aarch64-linux-gnu- \
         O=out \
+        dtbs \
         CROSS_COMPILE=aarch64-linux-android-

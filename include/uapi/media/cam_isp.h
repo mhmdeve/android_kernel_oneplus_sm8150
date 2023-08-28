@@ -516,7 +516,6 @@ struct cam_fps_config {
 
 /**
  * struct cam_isp_init_frame_drop_config - init frame drop configuration
- *
  * @init_frame_drop:            Initial number of frames needs to drop
  */
 
